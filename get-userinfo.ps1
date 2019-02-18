@@ -1,14 +1,10 @@
 function get-userinfo {
 param (
 [parameter(mandatory=$true)]
-[string]$inputpath,
-[parameter(mandatory=$true)]
 [string]$OutputPath
-
-
 )  
-
-$path=get-content $inputpath
+$path=(Get-ADUser -Filter *).SamAccountName 
+#$path=get-content $inputpath
 $f=foreach ($user in $path) {
     $groups=(Get-ADPrincipalGroupMembership $user).name
     $account=(Get-ADUser $user).enabled
