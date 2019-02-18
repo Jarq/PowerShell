@@ -1,0 +1,1 @@
+﻿Get-ChildItem -Path C:\Users\jzadlok\Downloads\bluescreenview-x64 | Where-Object {$_.LastWriteTime -lt (get-date).AddDays(-10)} 
